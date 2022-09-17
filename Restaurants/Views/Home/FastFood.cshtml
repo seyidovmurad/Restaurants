@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Restaurants.Models.FastFood>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <title>Restaurant</title>
+</head>
+<body>
+    <header>
+        <nav>
+            Restaurant
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="FastFood">Fast Foods</a></li>
+                <li><a asp-controller="Home" asp-action="Meal">Hot Meals</a></li>
+                <li><a asp-controller="Home" asp-action="Drink">Drinks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <div class="content">
+            <div class="content-head">
+                <h3>Fast Foods</h3>
+                <hr>
+            </div>
+            <div class="content-body">
+                @foreach (var fast in Model)
+                {
+                    <div class="cart">
+                        <img src="@fast.Url" alt="" />
+                        <div>
+                            <h4>@fast.Name</h4>
+                            <span>@fast.Price ₼</span>
+                            <p>@fast.SubDesc(70)</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
